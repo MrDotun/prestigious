@@ -8,75 +8,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #D4AF37; --red: #9B111E; }
-        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
         .font-serif { font-family: 'Cinzel', serif; }
         .gold-text { color: #D4AF37; }
         .bg-red-luxury { background-color: #9B111E; }
-        .gold-border { border-color: #D4AF37; }
         .gold-gradient { background: linear-gradient(135deg, #C5A028 0%, #D4AF37 50%, #F5E1A4 100%); }
-        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .glass { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="bg-white">
 
-    <nav class="fixed top-0 w-full z-50 glass border-b gold-border/20 px-6 py-4 flex justify-between items-center">
+    <nav class="fixed top-0 w-full z-50 glass border-b border-[#D4AF37]/20 px-6 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-3">
             <img src="https://raw.githubusercontent.com/MrDotun/prestigious/main/IMG-20260320-WA0047.jpg" alt="Logo" class="h-10 w-auto">
-            <span class="font-serif font-bold tracking-widest text-xs sm:text-sm">PRESTIGIOUS FIT</span>
+            <span class="font-serif font-bold tracking-widest text-[10px] sm:text-xs">PRESTIGIOUS FIT</span>
         </div>
         <div class="flex items-center space-x-5">
             <button onclick="toggleCart()" class="relative">
                 <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                 <span id="cart-count" class="absolute -top-2 -right-2 bg-red-luxury text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
             </button>
-            <a href="https://wa.me/2348032088481" class="hidden sm:block gold-gradient text-white px-6 py-2 rounded-full text-[10px] font-bold tracking-widest shadow-lg">WHATSAPP</a>
+            <a href="https://wa.me/2348032088481" class="gold-gradient text-white px-5 py-2 rounded-full text-[9px] font-bold tracking-widest shadow-md">WHATSAPP</a>
         </div>
     </nav>
 
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <section class="relative h-screen flex items-center justify-center">
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-black/40 z-10"></div>
-            <img src="" class="w-full h-full object-cover scale-110" style="filter: brightness(0.8);">
+            <div class="absolute inset-0 bg-black/50 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
         </div>
-        <div class="relative z-20 text-center px-6">
-            <h1 class="font-serif text-white text-5xl md:text-8xl mb-4 tracking-tighter reveal active">PRESTIGIOUS <span class="gold-text">FIT</span></h1>
-            <p class="text-white/80 tracking-[0.4em] uppercase text-[10px] mb-10 reveal active">Engineering Luxury Nigerian Native Wear</p>
-            <a href="#shop" class="bg-white text-black px-12 py-4 rounded-full font-bold text-xs tracking-widest hover:bg-gold transition-colors duration-500 reveal active">SHOP COLLECTION</a>
+        <div class="relative z-20 text-center px-6 reveal active">
+            <h1 class="font-serif text-white text-5xl md:text-8xl mb-4">PRESTIGIOUS <span class="gold-text">FIT</span></h1>
+            <p class="text-white/80 tracking-[0.4em] uppercase text-[9px] mb-10">Luxury Bespoke • Engineering Excellence</p>
+            <a href="#shop" class="bg-white text-black px-10 py-4 rounded-full font-bold text-[10px] tracking-[0.2em] hover:bg-gold transition-all">VIEW COLLECTIONS</a>
         </div>
     </section>
 
     <section id="shop" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-16 reveal">
-            <h2 class="font-serif text-4xl mb-4">The Signature Series</h2>
-            <p class="text-gray-500 uppercase tracking-widest text-[10px]">Excellence starts at ₦100,000</p>
+        <div class="text-center mb-20 reveal">
+            <h2 class="font-serif text-3xl mb-4">The Boutique Gallery</h2>
+            <p class="text-gray-400 uppercase tracking-widest text-[9px]">Hand-Crafted Masterpieces Starting at ₦100,000</p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12" id="product-grid"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" id="product-grid"></div>
     </section>
 
     <section class="bg-gray-50 py-24 px-6">
-        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div class="reveal">
-                <h2 class="font-serif text-3xl mb-6">Bespoke Fit Guide</h2>
-                <p class="text-gray-600 mb-8 leading-relaxed">Luxury is in the details. To ensure a perfect fit for your custom garment, please provide your measurements. Every ₦100k+ masterpiece is tailored to your unique silhouette.</p>
-                <div class="grid grid-cols-2 gap-4">
-                    <input type="number" id="m-bust" placeholder="Bust (in)" class="p-4 border rounded-xl focus:border-[#D4AF37] outline-none bg-white">
-                    <input type="number" id="m-waist" placeholder="Waist (in)" class="p-4 border rounded-xl focus:border-[#D4AF37] outline-none bg-white">
-                    <input type="number" id="m-hips" placeholder="Hips (in)" class="p-4 border rounded-xl focus:border-[#D4AF37] outline-none bg-white">
-                    <input type="number" id="m-length" placeholder="Length (in)" class="p-4 border rounded-xl focus:border-[#D4AF37] outline-none bg-white">
-                </div>
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="font-serif text-3xl mb-6">Measurement Consultation</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <input type="number" id="m-bust" placeholder="Bust (in)" class="p-4 border rounded-xl outline-none focus:border-[#D4AF37]">
+                <input type="number" id="m-waist" placeholder="Waist (in)" class="p-4 border rounded-xl outline-none focus:border-[#D4AF37]">
+                <input type="number" id="m-hips" placeholder="Hips (in)" class="p-4 border rounded-xl outline-none focus:border-[#D4AF37]">
+                <input type="number" id="m-length" placeholder="Length (in)" class="p-4 border rounded-xl outline-none focus:border-[#D4AF37]">
             </div>
-            <div class="rounded-[40px] overflow-hidden shadow-2xl reveal">
-                <img src="" class="w-full">
-            </div>
+            <p class="text-[10px] text-gray-400 italic">Measurements will be sent with your order via WhatsApp.</p>
         </div>
     </section>
 
     <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-80 sm:w-96 bg-white z-[100] transform translate-x-full transition-transform duration-500 shadow-2xl p-8 flex flex-col">
         <div class="flex justify-between items-center mb-10">
-            <h3 class="font-serif text-2xl">Your Bag</h3>
+            <h3 class="font-serif text-2xl">Bag</h3>
             <button onclick="toggleCart()" class="text-3xl">&times;</button>
         </div>
         <div id="cart-list" class="flex-grow space-y-6 overflow-y-auto"></div>
@@ -85,42 +78,47 @@
                 <span>Total</span>
                 <span id="total-amount">₦0</span>
             </div>
-            <button onclick="checkout()" class="w-full bg-red-luxury text-white py-5 rounded-2xl font-bold tracking-widest text-xs hover:opacity-90 shadow-xl transition">COMPLETE VIA WHATSAPP</button>
+            <button onclick="checkout()" class="w-full bg-red-luxury text-white py-5 rounded-2xl font-bold tracking-widest text-[10px]">ORDER ON WHATSAPP</button>
         </div>
     </div>
 
     <script>
         const products = [
-            { id: 1, name: "Gold Aura Lace Gown", price: 155000, img: "" },
-            { id: 2, name: "Premium Red Corset Gown", price: 125000, img: "http://googleusercontent.com/image_collection/image_retrieval/1950938768405800623_1" },
-            { id: 3, name: "Signature Ankara Jumpsuit", price: 100000, img: "" },
-            { id: 4, name: "Bridal Silk Iro & Buba", price: 220000, img: "" },
-            { id: 5, name: "Luxury Female Agbada Set", price: 180000, img: "" },
-            { id: 6, name: "Red Carpet Velvet Mix", price: 145000, img: "http://googleusercontent.com/image_collection/image_retrieval/13937505633283378706_3" }
+            { id: 1, name: "Gold Aura Lace Gown", price: 155000, img: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1000" },
+            { id: 2, name: "Crimson Corset Gown", price: 125000, img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=1000" },
+            { id: 3, name: "Signature Agbada Set", price: 180000, img: "https://images.unsplash.com/photo-1572804013307-a9a11198427e?q=80&w=1000" },
+            { id: 4, name: "Royal Silk Iro & Buba", price: 140000, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=1000" },
+            { id: 5, name: "Ankara Jumpsuit Luxe", price: 100000, img: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000" },
+            { id: 6, name: "Velvet Corset Masterpiece", price: 165000, img: "https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?q=80&w=1000" },
+            { id: 7, name: "Bridal Aso-Oke Set", price: 280000, img: "https://images.unsplash.com/photo-1549570652-97324981a6fd?q=80&w=1000" },
+            { id: 8, name: "Modern Ankara Shift", price: 105000, img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000" },
+            { id: 9, name: "Heavy Lace Owambe Fit", price: 195000, img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1000" },
+            { id: 10, name: "Exotic Silk Caftan", price: 115000, img: "https://images.unsplash.com/photo-1617130863458-7f2cd390d594?q=80&w=1000" },
+            { id: 11, name: "Gold Thread Embroidery", price: 210000, img: "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1000" },
+            { id: 12, name: "Red Carpet Column Gown", price: 175000, img: "https://images.unsplash.com/photo-1518767761162-1593c3076d12?q=80&w=1000" },
+            { id: 13, name: "Premium Brocade Agbada", price: 225000, img: "https://images.unsplash.com/photo-1560362614-890275988cd7?q=80&w=1000" },
+            { id: 14, name: "Hand-Beaded Ankara", price: 130000, img: "https://images.unsplash.com/photo-1561932850-f13404855e53?q=80&w=1000" },
+            { id: 15, name: "Royal Blue Lace Gown", price: 185000, img: "https://images.unsplash.com/photo-1550630993-c674432538a4?q=80&w=1000" }
         ];
 
         let cart = [];
-
-        // LOAD PRODUCTS
         const grid = document.getElementById('product-grid');
         products.forEach(p => {
             grid.innerHTML += `
                 <div class="reveal group">
-                    <div class="relative h-[450px] rounded-[30px] overflow-hidden mb-6 shadow-lg">
-                        <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
-                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-6">
-                            <button onclick="addToCart(${p.id})" class="bg-white text-black px-8 py-3 rounded-full font-bold text-[10px] tracking-widest transform translate-y-4 group-hover:translate-y-0 transition">QUICK ADD</button>
+                    <div class="relative h-[450px] rounded-[30px] overflow-hidden mb-4 shadow-md">
+                        <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart(${p.id})" class="bg-white px-6 py-2 rounded-full font-bold text-[10px]">ADD TO BAG</button>
                         </div>
                     </div>
                     <div class="text-center">
-                        <h4 class="font-serif text-lg">${p.name}</h4>
-                        <p class="gold-text font-bold text-sm mt-1">₦${p.price.toLocaleString()}</p>
+                        <h4 class="font-serif text-md">${p.name}</h4>
+                        <p class="gold-text font-bold text-sm">₦${p.price.toLocaleString()}</p>
                     </div>
-                </div>
-            `;
+                </div>`;
         });
 
-        // REVEAL ANIMATION ON SCROLL
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
@@ -128,7 +126,7 @@
 
         function addToCart(id) {
             cart.push(products.find(p => p.id === id));
-            updateCart();
+            updateUI();
             toggleCart();
         }
 
@@ -136,31 +134,30 @@
             document.getElementById('cart-sidebar').classList.toggle('translate-x-full');
         }
 
-        function updateCart() {
+        function updateUI() {
             document.getElementById('cart-count').innerText = cart.length;
             const list = document.getElementById('cart-list');
             list.innerHTML = cart.map((item, idx) => `
                 <div class="flex items-center space-x-4">
-                    <img src="${item.img}" class="w-16 h-16 rounded-xl object-cover shadow">
+                    <img src="${item.img}" class="w-16 h-16 rounded-lg object-cover">
                     <div class="flex-grow">
-                        <h5 class="text-xs font-bold uppercase">${item.name}</h5>
-                        <p class="gold-text text-sm">₦${item.price.toLocaleString()}</p>
+                        <h5 class="text-[9px] font-bold uppercase">${item.name}</h5>
+                        <p class="gold-text text-xs">₦${item.price.toLocaleString()}</p>
                     </div>
-                    <button onclick="cart.splice(${idx},1);updateCart();" class="text-gray-300 hover:text-red-luxury">&times;</button>
-                </div>
-            `).join('');
+                    <button onclick="cart.splice(${idx},1);updateUI();" class="text-gray-300">&times;</button>
+                </div>`).join('');
             const total = cart.reduce((s, i) => s + i.price, 0);
             document.getElementById('total-amount').innerText = `₦${total.toLocaleString()}`;
         }
 
         function checkout() {
-            if(cart.length === 0) return alert("Your bag is empty.");
-            const bust = document.getElementById('m-bust').value;
-            const waist = document.getElementById('m-waist').value;
-            let msg = `*PRESTIGIOUS FIT ORDER*%0A%0A`;
+            if(cart.length === 0) return alert("Select an outfit.");
+            const b = document.getElementById('m-bust').value;
+            const w = document.getElementById('m-waist').value;
+            let msg = `*NEW ORDER - PRESTIGIOUS FIT*%0A%0A`;
             cart.forEach(i => msg += `• ${i.name} (₦${i.price.toLocaleString()})%0A`);
             msg += `%0A*TOTAL: ${document.getElementById('total-amount').innerText}*`;
-            if(bust) msg += `%0A%0A*Measurements:*%0A- Bust: ${bust}"%0A- Waist: ${waist}"`;
+            if(b) msg += `%0A%0A*Measurements:* Bust: ${b}, Waist: ${w}`;
             window.open(`https://wa.me/2348032088481?text=${msg}`);
         }
     </script>
