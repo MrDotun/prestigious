@@ -1,1 +1,168 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestigious Fit Fashion LTD | Luxury Bespoke</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --red: #9B111E; }
+        body { font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        .font-serif { font-family: 'Cinzel', serif; }
+        .gold-gradient { background: linear-gradient(to right, #C5A028, #D4AF37, #F5E1A4); }
+        .parallax-bg { transition: transform 0.5s cubic-bezier(0,0,0.2,1); }
+        .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <nav class="fixed top-0 w-full z-50 glass border-b border-[#D4AF37]/20 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <div class="w-10 h-10 rounded-full border-2 border-[#D4AF37] flex items-center justify-center font-serif font-bold text-[#D4AF37]">PF</div>
+            <span class="font-serif font-bold tracking-widest text-sm hidden sm:block">PRESTIGIOUS FIT</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <button onclick="toggleCart()" class="relative">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-width="2"/></svg>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-[#9B111E] text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">0</span>
+            </button>
+            <a href="https://wa.me/2348032088481" class="gold-gradient text-white px-5 py-2 rounded-full text-xs font-bold shadow-md hover:scale-105 transition">WHATSAPP</a>
+        </div>
+    </nav>
+
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80" class="w-full h-full object-cover opacity-20 parallax-bg" id="hero-img">
+        </div>
+        <div class="relative z-10 text-center px-4 animate__animated animate__fadeInUp">
+            <h1 class="font-serif text-5xl md:text-7xl mb-4 tracking-tighter">ENGINEERING <span class="text-[#9B111E]">PRESTIGE</span></h1>
+            <p class="text-gray-600 tracking-[0.3em] uppercase text-sm mb-8">Nigerian Native Luxury • Est. 2026</p>
+            <a href="#shop" class="inline-block border-2 border-[#D4AF37] text-[#D4AF37] px-10 py-3 rounded-full font-bold hover:bg-[#D4AF37] hover:text-white transition-all duration-500">EXPLORE COLLECTIONS</a>
+        </div>
+    </section>
+
+    <section id="shop" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="font-serif text-3xl">The Masterpiece Gallery</h2>
+                <div class="w-20 h-1 bg-[#9B111E] mt-2"></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="product-grid">
+            </div>
+    </section>
+
+    <section class="bg-gray-50 py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-serif text-3xl mb-10">Bespoke Accuracy</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="text-left space-y-4">
+                    <p class="text-gray-600">For ₦100,000+ luxury, the fit must be surgical. Provide your measurements below or book a physical session in Ikorodu.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="number" id="m-bust" placeholder="Bust (in)" class="p-3 border rounded-lg focus:border-[#D4AF37] outline-none">
+                        <input type="number" id="m-waist" placeholder="Waist (in)" class="p-3 border rounded-lg focus:border-[#D4AF37] outline-none">
+                        <input type="number" id="m-hips" placeholder="Hips (in)" class="p-3 border rounded-lg focus:border-[#D4AF37] outline-none">
+                        <input type="number" id="m-length" placeholder="Length (in)" class="p-3 border rounded-lg focus:border-[#D4AF37] outline-none">
+                    </div>
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                    <img src="https://images.unsplash.com/photo-1551029506-0807d4a21f68?auto=format&fit=crop&q=80" alt="Tailoring">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-80 glass z-[60] transform translate-x-full transition-transform duration-500 shadow-2xl p-6">
+        <div class="flex justify-between items-center mb-8">
+            <h3 class="font-serif text-xl">Your Selection</h3>
+            <button onclick="toggleCart()" class="text-2xl">&times;</button>
+        </div>
+        <div id="cart-items" class="space-y-4 mb-8 h-2/3 overflow-y-auto"></div>
+        <div class="border-t border-[#D4AF37]/20 pt-4">
+            <div class="flex justify-between font-bold text-xl mb-6">
+                <span>Total:</span>
+                <span id="cart-total">₦0</span>
+            </div>
+            <button onclick="checkout()" class="w-full gold-gradient text-white py-4 rounded-xl font-bold tracking-widest hover:opacity-90">CHECKOUT ON WHATSAPP</button>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: "Gold Aura Corset Gown", price: 155000, img: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80" },
+            { id: 2, name: "Crimson Royal Lace", price: 120000, img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&q=80" },
+            { id: 3, name: "Bespoke Bridal Aso-Oke", price: 250000, img: "https://images.unsplash.com/photo-1572804013307-a9a11198427e?auto=format&fit=crop&q=80" }
+        ];
+
+        let cart = [];
+
+        // Dynamic Product Loading
+        const grid = document.getElementById('product-grid');
+        products.forEach(p => {
+            grid.innerHTML += `
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500">
+                    <div class="relative h-96 overflow-hidden">
+                        <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart(${p.id})" class="bg-white text-black px-6 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="font-serif text-lg">${p.name}</h4>
+                        <p class="text-[#D4AF37] font-bold mt-2">₦${p.price.toLocaleString()}</p>
+                    </div>
+                </div>
+            `;
+        });
+
+        function addToCart(id) {
+            const p = products.find(prod => prod.id === id);
+            cart.push(p);
+            updateUI();
+            if(window.confirm("Added to cart. View selection?")) toggleCart();
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        function updateUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const itemDiv = document.getElementById('cart-items');
+            itemDiv.innerHTML = cart.map(item => `
+                <div class="flex justify-between items-center bg-white p-3 rounded-lg shadow-sm border-l-4 border-[#9B111E]">
+                    <span class="text-sm font-medium">${item.name}</span>
+                    <span class="text-[#D4AF37] font-bold text-xs">₦${item.price.toLocaleString()}</span>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((s, i) => s + i.price, 0);
+            document.getElementById('cart-total').innerText = `₦${total.toLocaleString()}`;
+        }
+
+        function checkout() {
+            const b = document.getElementById('m-bust').value;
+            const w = document.getElementById('m-waist').value;
+            const h = document.getElementById('m-hips').value;
+            
+            let msg = `*NEW ORDER FROM PRESTIGIOUS FIT*%0A%0A`;
+            cart.forEach(i => msg += `• ${i.name} (₦${i.price.toLocaleString()})%0A`);
+            msg += `%0A*Total: ${document.getElementById('cart-total').innerText}*`;
+            if(b) msg += `%0A%0A*Measurements:*%0A- Bust: ${b}"%0A- Waist: ${w}"%0A- Hips: ${h}"`;
+            
+            window.open(`https://wa.me/2348032088481?text=${msg}`);
+        }
+
+        // Parallax Effect for Hero
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            document.getElementById('hero-img').style.transform = `translateY(${scroll * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>
