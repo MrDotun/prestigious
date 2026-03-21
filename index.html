@@ -3,174 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestigious Fit | Haute Couture</title>
+    <title>Prestigious Fit | Luxury Haute Couture</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
-        :root {
-            --wine: #4a0404;
-            --royal-red: #9B111E;
-            --gold: #D4AF37;
-        }
-        
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: #fffaf5; 
-            color: #1a1a1a;
-            overflow-x: hidden;
-        }
-
+        :root { --wine: #4a0404; --royal-red: #9B111E; --gold: #D4AF37; --off-white: #FAF9F6; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--off-white); color: #1a1a1a; overflow-x: hidden; }
         .font-luxury { font-family: 'Cinzel', serif; }
         
-        /* Parallax & Glassmorphism */
-        .parallax-hero {
-            background: linear-gradient(rgba(74, 4, 4, 0.8), rgba(155, 17, 30, 0.7)), 
-                        url('gown.jpg'); /* Using one of your images as a subtle bg */
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
-        }
-
-        .luxury-card {
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .luxury-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px -12px rgba(74, 4, 4, 0.25);
-            border-color: var(--gold);
-        }
-
-        /* Gold Shine Animation */
-        .shine-effect {
-            position: relative;
-            overflow: hidden;
-        }
-        .shine-effect::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: rotate(45deg);
-            transition: 0.8s;
-        }
-        .shine-effect:hover::after {
-            left: 100%;
-            top: 100%;
-        }
-
-        /* Mobile Bottom Nav */
-        .mobile-nav {
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-            background: rgba(255, 255, 255, 0.95);
+        /* Glassmorphism Sidebar */
+        #cart-sidebar {
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
         }
+
+        /* Gold Shine Button */
+        .btn-premium {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--royal-red) 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212,175,55,0.3), transparent);
+            transform: rotate(45deg);
+            transition: 0.6s;
+        }
+        .btn-premium:hover::after { left: 100%; top: 100%; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); }
     </style>
 </head>
 <body class="pb-20 md:pb-0">
 
-    <nav class="sticky top-0 w-full z-50 bg-white border-b border-gold/20 px-4 md:px-10 py-3 flex justify-between items-center">
+    <nav class="sticky top-0 w-full z-[100] bg-white border-b border-gold/10 px-4 md:px-12 py-3 flex justify-between items-center shadow-sm">
         <div class="flex items-center space-x-3">
-            <img src="Screenshot_20260320-183623.jpg" alt="Logo" class="h-12 w-auto">
-            <div>
-                <h1 class="font-luxury text-lg font-bold text-[#9B111E] tracking-tighter leading-none">PRESTIGIOUS FIT</h1>
-                <p class="text-[8px] text-[#D4AF37] font-bold tracking-[0.4em] uppercase">Fashion LTD</p>
+            <img src="Screenshot_20260320-183623.jpg" alt="Logo" class="h-10 md:h-12 w-auto">
+            <div class="leading-none">
+                <h1 class="font-luxury text-sm md:text-lg font-bold text-[#9B111E] tracking-tighter">PRESTIGIOUS FIT</h1>
+                <p class="text-[7px] md:text-[9px] text-[#D4AF37] font-bold tracking-[0.4em] uppercase">Fashion LTD</p>
             </div>
         </div>
         
-        <div class="hidden md:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-widest">
-            <a href="#" class="text-[#9B111E]">Home</a>
-            <a href="#" class="hover:text-[#D4AF37] transition">Collections</a>
-            <a href="https://wa.me/2348032088481" class="bg-[#9B111E] text-white px-6 py-2.5 rounded-full shine-effect shadow-lg">Contact Us</a>
+        <div class="flex items-center space-x-4">
+            <button onclick="toggleCart()" class="relative p-2 bg-[#9B111E] text-white rounded-full shadow-lg hover:scale-110 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                <span id="cart-count" class="absolute -top-1 -right-1 bg-[#D4AF37] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </button>
         </div>
-
-        <a href="https://wa.me/2348032088481" class="md:hidden bg-[#9B111E] text-white p-2 rounded-full shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-        </a>
     </nav>
 
-    <header class="parallax-hero relative h-[50vh] flex items-center justify-center text-center px-4">
-        <div data-aos="zoom-in" class="bg-black/30 p-8 rounded-2xl backdrop-blur-sm border border-white/10">
-            <h2 class="font-luxury text-4xl md:text-7xl text-white mb-2 uppercase tracking-[0.2em]">The Elite Look</h2>
-            <div class="h-1 w-32 bg-[#D4AF37] mx-auto mb-4"></div>
-            <p class="text-[#D4AF37] font-light tracking-[0.5em] text-xs md:text-sm uppercase">Exclusively Prestigious</p>
+    <header class="relative h-[60vh] flex items-center justify-center overflow-hidden bg-[#2a0202]">
+        <div class="absolute inset-0 opacity-40 bg-[url('gown.jpg')] bg-cover bg-fixed bg-center scale-110 animate-pulse"></div>
+        <div class="relative z-10 text-center animate__animated animate__fadeInUp">
+            <div class="bg-black/40 backdrop-blur-md border border-white/20 p-8 md:p-12 rounded-sm mx-4">
+                <h2 class="font-luxury text-4xl md:text-7xl text-white mb-2 uppercase tracking-[0.25em]">The Elite Look</h2>
+                <div class="h-[2px] w-24 bg-[#D4AF37] mx-auto mb-6"></div>
+                <p class="text-[#D4AF37] font-light tracking-[0.6em] text-[10px] md:text-xs uppercase">Exclusively Prestigious</p>
+            </div>
         </div>
     </header>
 
-    <main class="py-12 px-4 max-w-7xl mx-auto">
-        <div class="mb-12 text-center" data-aos="fade-up">
-            <span class="text-[#9B111E] text-xs font-bold tracking-[0.3em] uppercase">Our Masterpieces</span>
-            <h3 class="font-luxury text-3xl md:text-4xl text-gray-900 mt-2">Signature Gallery</h3>
+    <main class="py-16 px-4 max-w-7xl mx-auto">
+        <div class="mb-16 text-center" data-aos="fade-up">
+            <span class="text-[#9B111E] text-[10px] font-bold tracking-[0.4em] uppercase">Our Masterpieces</span>
+            <h3 class="font-luxury text-3xl md:text-5xl text-gray-900 mt-3 tracking-wide">Signature Gallery</h3>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10" id="main-grid">
-            </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12" id="product-grid"></div>
     </main>
 
-    <div class="md:hidden fixed bottom-0 left-0 w-full mobile-nav py-3 px-10 flex justify-between items-center z-50 border-t border-gold/10">
-        <div class="flex flex-col items-center text-[#9B111E]">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-            <span class="text-[8px] font-bold uppercase">Home</span>
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-96 z-[200] translate-x-full shadow-2xl border-l border-gold/20 flex flex-col">
+        <div class="p-6 border-b flex justify-between items-center bg-white">
+            <h2 class="font-luxury text-xl text-[#9B111E]">Your Selection</h2>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-black">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
         </div>
-        <div class="flex flex-col items-center text-gray-400">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            <span class="text-[8px] font-bold uppercase">Catalog</span>
+        <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-4">
+            </div>
+        <div class="p-6 border-t bg-white">
+            <div class="flex justify-between mb-4 font-bold text-lg">
+                <span>Total:</span>
+                <span id="cart-total" class="text-[#9B111E]">₦0</span>
+            </div>
+            <button class="w-full btn-premium text-white py-4 rounded-sm font-bold uppercase tracking-widest text-xs shadow-xl">Complete Order via WhatsApp</button>
         </div>
-        <a href="https://wa.me/2348032088481" class="flex flex-col items-center text-gray-400">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            <span class="text-[8px] font-bold uppercase">WhatsApp</span>
-        </a>
     </div>
 
-    <footer class="bg-stone-950 text-white py-16 px-6 text-center border-t-2 border-[#D4AF37]">
-        <img src="Screenshot_20260320-183623.jpg" alt="Logo" class="h-16 mx-auto mb-6 brightness-125">
-        <p class="font-luxury text-xl mb-6 tracking-widest text-[#D4AF37]">PRESTIGIOUS FIT</p>
-        <p class="text-[10px] text-gray-500 uppercase tracking-[0.5em] mb-4">Crafted In Nigeria • Designed for the World</p>
-    </footer>
+    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md border-t border-gold/10 py-3 px-10 flex justify-between items-center z-50">
+        <div class="flex flex-col items-center text-[#9B111E]">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+            <span class="text-[8px] mt-1 font-bold uppercase tracking-widest">Home</span>
+        </div>
+        <div onclick="toggleCart()" class="flex flex-col items-center text-gray-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+            <span class="text-[8px] mt-1 font-bold uppercase tracking-widest">Cart</span>
+        </div>
+        <a href="https://wa.me/2348032088481" class="flex flex-col items-center text-gray-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+            <span class="text-[8px] mt-1 font-bold uppercase tracking-widest">Inquiry</span>
+        </a>
+    </div>
 
     <script>
         AOS.init({ duration: 1000, once: true });
 
         const products = [
-            { name: "Prestige 3-in-1 Bridal Gown", price: 550000, img: "gown.jpg", tag: "Iconic" },
-            { name: "Executive Fit Piece", price: 100000, img: "100k Executive.jpg", tag: "Elite" },
-            { name: "Funnel Corset", price: 50000, img: "50kfitfunnelcorset.jpg" },
-            { name: "Premium Aso-Oke", price: 55000, img: "55kfitAso-Oke.jpg" },
-            { name: "Puff Shirt & Skirt", price: 60000, img: "60kFitpuffshirtandskirt.jpg" },
-            { name: "Wura Fit Gown", price: 30000, img: "30kWura-fitgown.jpg" },
-            { name: "Fit Event Gown", price: 45000, img: "45kfiteventgown.jpg" },
-            { name: "Elation Hoodie & Jogger", price: 55000, img: "55kelationhoodie&jogger.jpg" },
-            { name: "Black Drape Gown", price: 25000, img: "25kfitblackdrapegown.jpg" },
-            { name: "Bridal Gown", price: 550000, img: "gowns.jpg" }
+            { id: 1, name: "Prestige 3-in-1 Bridal Gown", price: 550000, img: "gown.jpg", tag: "Iconic" },
+            { id: 2, name: "Executive Fit Piece", price: 100000, img: "100k Executive.jpg", tag: "New" },
+            { id: 3, name: "Funnel Corset", price: 50000, img: "50kfitfunnelcorset.jpg" },
+            { id: 4, name: "Premium Aso-Oke", price: 55000, img: "55kfitAso-Oke.jpg" },
+            { id: 5, name: "Puff Shirt & Skirt", price: 60000, img: "60kFitpuffshirtandskirt.jpg" },
+            { id: 6, name: "Wura Fit Gown", price: 30000, img: "30kWura-fitgown.jpg" },
+            { id: 7, name: "Fit Event Gown", price: 45000, img: "45kfiteventgown.jpg" },
+            { id: 8, name: "Elation Hoodie & Jogger", price: 55000, img: "55kelationhoodie&jogger.jpg" },
+            { id: 9, name: "Black Drape Gown", price: 25000, img: "25kfitblackdrapegown.jpg" },
+            { id: 10, name: "Bridal Gown", price: 550000, img: "gowns.jpg" }
         ];
 
-        const grid = document.getElementById('main-grid');
-        products.forEach((p, index) => {
-            grid.innerHTML += `
-                <div class="luxury-card bg-white rounded-2xl overflow-hidden flex flex-col group shine-effect" data-aos="fade-up" data-aos-delay="${index * 100}">
-                    <div class="relative overflow-hidden aspect-[4/5]">
-                        <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                        ${p.tag ? `<div class="absolute top-4 left-4 bg-[#9B111E] text-white text-[9px] font-bold px-3 py-1 rounded-full shadow-lg z-10 uppercase tracking-widest">${p.tag}</div>` : ''}
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#4a0404]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                            <button class="w-full bg-white text-[#9B111E] py-3 rounded-lg font-bold text-[10px] uppercase shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Fast Checkout</button>
+        let cart = [];
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            products.forEach((p, i) => {
+                grid.innerHTML += `
+                    <div class="group relative bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 rounded-sm" data-aos="fade-up" data-aos-delay="${i * 50}">
+                        <div class="relative overflow-hidden aspect-[3/4]">
+                            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                            ${p.tag ? `<span class="absolute top-4 left-4 bg-white text-black text-[8px] font-black px-4 py-1 uppercase tracking-widest shadow-lg">${p.tag}</span>` : ''}
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                                <button onclick="addToCart(${p.id})" class="w-full bg-white text-black py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-[#D4AF37] hover:text-white transition transform translate-y-4 group-hover:translate-y-0 duration-500">Add to Cart</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-6 text-center">
-                        <h4 class="font-luxury text-xs font-bold text-gray-800 uppercase mb-2 tracking-wider truncate">${p.name}</h4>
-                        <div class="w-6 h-0.5 bg-[#D4AF37] mx-auto mb-3 opacity-40"></div>
-                        <p class="text-[#9B111E] font-bold text-lg italic">₦${p.price.toLocaleString()}</p>
-                        <a href="https://wa.me/2348032088481?text=Hello, I am interested in the ${p.name}" class="md:hidden block mt-4 bg-gray-50 border border-gray-100 py-2 text-[9px] font-bold uppercase tracking-widest rounded-md">Order via WhatsApp</a>
-                    </div>
-                </div>`;
-        });
+                        <div class="p-6 text-center">
+                            <h4 class="font-luxury text-[11px] font-bold text-gray-800 uppercase tracking-widest mb-2">${p.name}</h4>
+                            <p class="text-[#9B111E] font-medium text-sm tracking-tighter">₦${p.price.toLocaleString()}</p>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCart();
+            // Simple visual feedback
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-20 right-4 bg-green-600 text-white px-6 py-2 rounded-sm text-xs z-[300] animate__animated animate__fadeInRight';
+            toast.innerText = `Added: ${product.name}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            sidebar.classList.toggle('translate-x-full');
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            
+            cartItems.innerHTML = cart.length === 0 ? '<p class="text-gray-400 text-center italic text-sm mt-10 uppercase tracking-widest">Your cart is empty</p>' : '';
+            
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItems.innerHTML += `
+                    <div class="flex items-center space-x-4 border-b border-gray-100 pb-4">
+                        <img src="${item.img}" class="w-16 h-16 object-cover rounded-sm">
+                        <div class="flex-grow">
+                            <h5 class="text-[10px] font-bold uppercase tracking-tight">${item.name}</h5>
+                            <p class="text-[#9B111E] text-xs">₦${item.price.toLocaleString()}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-gray-300 hover:text-red-500">×</button>
+                    </div>`;
+            });
+
+            cartCount.innerText = cart.length;
+            cartTotal.innerText = `₦${total.toLocaleString()}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        renderProducts();
     </script>
 </body>
 </html>
