@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestigious Fit | Haute Couture</title>
+    <title>Prestigious Fit | Fashion Ltd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -25,6 +25,23 @@
 
         .font-luxury { font-family: 'Cinzel', serif; }
         
+        /* Brand Glow Effect */
+        .brand-gradient {
+            background: linear-gradient(to right, #9B111E, #4a0404);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline-lively {
+            animation: goldPulse 3s infinite;
+        }
+
+        @keyframes goldPulse {
+            0% { color: #D4AF37; opacity: 0.8; }
+            50% { color: #9B111E; opacity: 1; }
+            100% { color: #D4AF37; opacity: 0.8; }
+        }
+
         /* Swiper Customization */
         .swiper { width: 100%; height: 60vh; }
         .swiper-slide {
@@ -74,9 +91,9 @@
     <nav class="sticky top-0 w-full z-[100] bg-white border-b border-gold/20 px-4 md:px-10 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-4">
             <img src="Screenshot_20260320-183623.jpg" alt="Logo" class="h-14 md:h-20 w-auto transition-all">
-            <div class="border-l border-gold/30 pl-4">
-                <h1 class="font-luxury text-xl md:text-2xl font-bold text-[#9B111E] tracking-widest leading-none">PRESTIGIOUS FIT</h1>
-                <p class="text-[9px] text-[#D4AF37] font-bold tracking-[0.5em] uppercase mt-1">Haute Couture LTD</p>
+            <div class="border-l-2 border-gold/40 pl-4">
+                <h1 class="font-luxury text-xl md:text-2xl font-bold brand-gradient tracking-tighter leading-none">PRESTIGIOUS FIT</h1>
+                <p class="text-[10px] tagline-lively font-bold tracking-[0.3em] uppercase mt-1">Fashion Ltd | Fit in every style</p>
             </div>
         </div>
         
@@ -104,7 +121,7 @@
                     <div class="bg-black/40 p-10 md:p-16 rounded-3xl backdrop-blur-md border border-white/10 mx-4">
                         <h2 class="font-luxury text-4xl md:text-8xl text-white mb-4 uppercase tracking-[0.3em]">The Elite Look</h2>
                         <div class="h-1.5 w-40 bg-[#D4AF37] mx-auto mb-6"></div>
-                        <p class="text-[#D4AF37] font-light tracking-[0.6em] text-xs md:text-base uppercase">Exclusively Prestigious</p>
+                        <p class="text-[#D4AF37] font-light tracking-[0.6em] text-xs md:text-base uppercase">Fit In Every Style</p>
                     </div>
                 </div>
             </div>
@@ -148,7 +165,7 @@
         </div>
     </div>
 
-    <div class="md:hidden fixed bottom-0 left-0 w-full mobile-nav py-4 px-10 flex justify-between items-center z-50 border-t border-gold/10">
+    <div class="md:hidden fixed bottom-0 left-0 w-full mobile-nav py-4 px-10 flex justify-between items-center z-50 border-t border-gold/10 bg-white">
         <div class="flex flex-col items-center text-[#9B111E]">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
             <span class="text-[9px] font-bold uppercase mt-1">Home</span>
@@ -165,8 +182,9 @@
 
     <footer class="bg-[#0a0a0a] text-white py-20 px-6 text-center border-t-4 border-[#D4AF37]">
         <img src="Screenshot_20260320-183623.jpg" alt="Logo" class="h-20 mx-auto mb-8 brightness-125 grayscale hover:grayscale-0 transition duration-500">
-        <p class="font-luxury text-2xl mb-4 tracking-[0.3em] text-[#D4AF37]">PRESTIGIOUS FIT</p>
-        <p class="text-[11px] text-gray-500 uppercase tracking-[0.6em] mb-8">Crafted In Nigeria • Designed for the World</p>
+        <p class="font-luxury text-2xl mb-2 tracking-[0.3em] text-[#D4AF37]">PRESTIGIOUS FIT</p>
+        <p class="text-xs text-white/60 uppercase tracking-[0.4em] mb-4 italic">Fit in every style</p>
+        <p class="text-[11px] text-gray-500 uppercase tracking-[0.6em] mb-8">Prestigious Fit Fashion Ltd • Designed for the World</p>
         <div class="flex justify-center space-x-6 text-xs text-gray-600 uppercase tracking-widest">
             <a href="#">Privacy</a>
             <span>•</span>
@@ -191,7 +209,7 @@
         });
 
         const products = [
-            { id: 1, name: "Prestige 3-in-1 Bridal Gown", price: 550000, img: "gown.jpg", tag: "Iconic" },
+            { id: 1, name: "Prestige 3-in-1 Bridal Gown", price: 980000, img: "gown.jpg", tag: "Iconic" },
             { id: 2, name: "Executive Fit Piece", price: 100000, img: "100k Executive.jpg", tag: "Elite" },
             { id: 3, name: "Funnel Corset", price: 50000, img: "50kfitfunnelcorset.jpg" },
             { id: 4, name: "Premium Aso-Oke", price: 55000, img: "55kfitAso-Oke.jpg" },
@@ -200,7 +218,7 @@
             { id: 7, name: "Fit Event Gown", price: 45000, img: "45kfiteventgown.jpg" },
             { id: 8, name: "Elation Hoodie & Jogger", price: 55000, img: "55kelationhoodie&jogger.jpg" },
             { id: 9, name: "Black Drape Gown", price: 25000, img: "25kfitblackdrapegown.jpg" },
-            { id: 10, name: "Bridal Gown", price: 550000, img: "gowns.jpg" }
+            { id: 10, name: "Bridal Gown", price: 980000, img: "gowns.jpg" }
         ];
 
         let cart = [];
